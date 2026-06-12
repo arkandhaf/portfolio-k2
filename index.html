@@ -1,298 +1,972 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio | Muhammad Arkan Dhaifullah</title>
-    <style>
-        /* --- CSS STYLING (Desain Website) --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Arkan Dhaifullah | Portfolio</title>
 
-        body {
-            background-color: #0f172a; /* Latar Slate Gelap Modern */
-            color: #e2e8f0;
-            line-height: 1.6;
-        }
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-        header {
-            background-color: #1e293b;
-            padding: 20px 10%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
+<style>
+  /* =========================================
+     CSS VARIABLES — DARK MODE PALETTE
+  ========================================= */
+  :root {
+    --bg-primary: #0b0f19;
+    --bg-secondary: #131927;
+    --bg-card: #161e2e;
+    --text-primary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #38bdf8;
+    --accent-glow: #06b6d4;
+    --border-color: rgba(148, 163, 184, 0.12);
+    --shadow-glow: 0 8px 30px rgba(56, 189, 248, 0.15);
+    --radius: 16px;
+    --max-width: 1100px;
+  }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #38bdf8; /* Aksen Biru Muda */
-        }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-        nav a {
-            color: #94a3b8;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+  html {
+    scroll-behavior: smooth;
+  }
 
-        nav a:hover {
-            color: #38bdf8;
-        }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 20% 0%, rgba(56, 189, 248, 0.07), transparent 35%),
+      radial-gradient(circle at 80% 30%, rgba(6, 182, 212, 0.06), transparent 40%);
+    background-attachment: fixed;
+  }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 0 10%;
-            padding-top: 100px;
-        }
+  h1, h2, h3, h4 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #f8fafc;
+  }
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            line-height: 1.2;
-        }
+  a {
+    color: var(--accent);
+    text-decoration: none;
+  }
 
-        .hero h1 span {
-            color: #38bdf8;
-        }
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
 
-        .hero h2 {
-            font-size: 22px;
-            color: #94a3b8;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
+  /* =========================================
+     NAVBAR
+  ========================================= */
+  header.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    background-color: rgba(11, 15, 25, 0.65);
+    border-bottom: 1px solid var(--border-color);
+  }
 
-        .hero p {
-            max-width: 700px;
-            margin-bottom: 30px;
-            font-size: 17px;
-            color: #cbd5e1;
-        }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
 
-        .btn {
-            display: inline-block;
-            background-color: #38bdf8;
-            color: #0f172a;
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
+  .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #f8fafc;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: -0.03em;
+  }
 
-        .btn:hover {
-            background-color: #0ea5e9;
-        }
+  .logo span {
+    color: var(--accent);
+  }
 
-        /* Seksi Konten Umum */
-        section {
-            padding: 100px 10%;
-            border-top: 1px solid #334155;
-        }
+  nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
 
-        section h2 {
-            font-size: 32px;
-            margin-bottom: 40px;
-            text-align: center;
-        }
+  nav a {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.25s ease;
+  }
 
-        section h2 span {
-            color: #38bdf8;
-        }
+  nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
 
-        /* Grid Pengalaman & Organisasi */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+  nav a:hover {
+    color: var(--text-primary);
+  }
 
-        .card {
-            background-color: #1e293b;
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+  nav a:hover::after {
+    width: 100%;
+  }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.1);
-        }
+  .nav-toggle {
+    display: none;
+  }
 
-        .card h3 {
-            margin-bottom: 5px;
-            color: #38bdf8;
-            font-size: 20px;
-        }
+  /* =========================================
+     HERO SECTION
+  ========================================= */
+  .hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 100px 0 60px;
+  }
 
-        .card .subtitle {
-            font-size: 14px;
-            color: #94a3b8;
-            margin-bottom: 15px;
-            font-style: italic;
-        }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
 
-        .card ul {
-            padding-left: 15px;
-            font-size: 15px;
-            color: #cbd5e1;
-        }
+  .hero-eyebrow .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+    box-shadow: 0 0 8px var(--accent-glow);
+    animation: pulse 2s infinite;
+  }
 
-        .card ul li {
-            margin-bottom: 8px;
-        }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
 
-        /* Keahlian / Skills List */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+  .hero h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.08;
+    margin-bottom: 20px;
+    max-width: 850px;
+  }
 
-        .skill-badge {
-            background-color: #334155;
-            color: #38bdf8;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 15px;
-            border: 1px solid #475569;
-        }
+  .hero h1 .highlight {
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 
-        /* Footer */
-        footer {
-            background-color: #0b0f19;
-            text-align: center;
-            padding: 30px;
-            color: #64748b;
-            font-size: 14px;
-            border-top: 1px solid #1e293b;
-        }
+  /* 
+    ====================================================
+    [CI/CD EDIT POINT #1 — HERO TAGLINE]
+    Edit the <p class="hero-tagline"> text below to
+    demonstrate a live deployment update via GitHub Pages.
+    Change the text, commit, push, and refresh the live
+    site to verify your CI/CD pipeline deployed correctly.
+    ====================================================
+  -->
+  <p class="hero-tagline" style="display:none"></p>
 
-        footer a {
-            color: #38bdf8;
-            text-decoration: none;
-        }
+  .hero p.subtitle {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-muted);
+    max-width: 620px;
+    margin-bottom: 36px;
+    font-weight: 400;
+  }
 
-        /* Responsif Mobile */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            header { padding: 20px 5%; }
-            section { padding: 60px 5%; }
-        }
-    </style>
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+    color: #0b0f19;
+    box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(56, 189, 248, 0.45);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  /* =========================================
+     SECTION GENERAL
+  ========================================= */
+  section {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+  }
+
+  .section-header {
+    margin-bottom: 50px;
+  }
+
+  .section-tag {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .section-header h2 {
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+  }
+
+  /* =========================================
+     ABOUT & EDUCATION
+  ========================================= */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-size: 1.02rem;
+  }
+
+  .edu-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .edu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .edu-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 4px;
+  }
+
+  .edu-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+
+  .edu-meta .accent-text {
+    color: var(--accent);
+  }
+
+  .course-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .course-tag {
+    font-size: 0.78rem;
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 5px 12px;
+    border-radius: 999px;
+  }
+
+  /* =========================================
+     EXPERIENCE TIMELINE
+  ========================================= */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .exp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .exp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-glow));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .exp-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-glow);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .exp-card:hover::before {
+    opacity: 1;
+  }
+
+  .exp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+
+  .exp-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .exp-org {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+
+  .exp-date {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    background: rgba(148, 163, 184, 0.08);
+    padding: 4px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .exp-card ul {
+    margin-top: 14px;
+    padding-left: 18px;
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+
+  .exp-card ul li {
+    margin-bottom: 8px;
+  }
+
+  .exp-card ul li::marker {
+    color: var(--accent);
+  }
+
+  /* =========================================
+     SKILLS BADGE CLOUD
+  ========================================= */
+  .skills-wrapper {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 40px;
+  }
+
+  .badge-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .badge:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(56, 189, 248, 0.08);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(56, 189, 248, 0.18);
+  }
+
+  .badge .dot-icon {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-glow);
+  }
+
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .cert-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+
+  .cert-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56, 189, 248, 0.3);
+  }
+
+  .cert-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .cert-item h4 {
+    font-size: 0.98rem;
+    margin-bottom: 2px;
+  }
+
+  .cert-item p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .lang-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .lang-chip {
+    flex: 1;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .lang-chip strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .lang-chip span {
+    font-size: 0.78rem;
+    color: var(--accent);
+  }
+
+  /* =========================================
+     CONTACT / FOOTER
+  ========================================= */
+  .contact-section {
+    text-align: center;
+  }
+
+  .contact-section .section-header {
+    margin-bottom: 30px;
+  }
+
+  .contact-section .section-header h2 {
+    margin-bottom: 12px;
+  }
+
+  .contact-section p.lead {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 36px;
+  }
+
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+
+  .contact-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 24px 32px;
+    min-width: 220px;
+    transition: all 0.3s ease;
+  }
+
+  .contact-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-4px);
+  }
+
+  .contact-card .label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .contact-card .value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    word-break: break-word;
+  }
+
+  .contact-card a.value:hover {
+    color: var(--accent);
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+  }
+
+  footer p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  footer .footer-accent {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* =========================================
+     RESPONSIVE — MOBILE FIRST ADJUSTMENTS
+  ========================================= */
+  @media (max-width: 860px) {
+    .about-grid,
+    .skills-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline {
+      grid-template-columns: 1fr;
+    }
+
+    nav ul {
+      gap: 18px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .nav-inner {
+      padding: 14px 20px;
+    }
+
+    nav ul {
+      display: none;
+    }
+
+    .hero {
+      min-height: 80vh;
+      padding-top: 70px;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn {
+      justify-content: center;
+      width: 100%;
+    }
+
+    section {
+      padding: 60px 0;
+    }
+
+    .contact-card {
+      width: 100%;
+    }
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Arkan</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#experience">Pengalaman</a>
-            <a href="#skills">Keahlian</a>
-            <a href="#contact">Kontak</a>
-        </nav>
-    </header>
+<!-- =========================================
+     NAVBAR
+========================================= -->
+<header class="navbar">
+  <div class="nav-inner">
+    <div class="logo">Arkan</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <section id="home" class="hero">
-        <h1>Halo, Saya <br><span>Muhammad Arkan D.</span></h1>
-        <h2>Mahasiswa Sistem dan Teknologi Informasi | Institut Teknologi Bandung</h2>
-        <p>
-            Saya memiliki fondasi kuat dalam komputasi, jaringan, dan pemikiran sistem yang didukung oleh keterlibatan aktif dalam inisiatif kepemimpinan dan organisasi. Berfokus pada pemanfaatan sistem berbasis data untuk meningkatkan efisiensi institusional serta infrastruktur digital guna berkontribusi dalam transformasi digital Indonesia.
-        </p>
-        <div style="margin-top: 10px;">
-            <a href="#experience" class="btn">Lihat Pengalaman Saya</a>
-        </div>
+<main>
+  <div class="container">
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================= -->
+    <section class="hero" id="home" style="border-bottom: none; padding-top: 60px;">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Open to Internships & Collaborations
+      </div>
+      <h1>
+        Hi, I'm Arkan —<br>
+        building <span class="highlight">digital infrastructure</span> for Indonesia's future.
+      </h1>
+
+      <!-- 
+        ====================================================
+        [CI/CD EDIT POINT — TAGLINE]
+        Edit the line below to demonstrate a live deployment
+        update via your GitHub Pages CI/CD pipeline.
+        Change this text, commit, push, and refresh the
+        live site to verify the deployment succeeded.
+        Example alternate text: "v1.1 — Now live via automated deployment 🚀"
+        ====================================================
+      -->
+      <p class="subtitle">
+        Undergraduate student in Information Systems & Technology at ITB, passionate about
+        data-driven systems, networks, and turning structured plans into real-world impact.
+        Currently deployed via an automated CI/CD pipeline — last update: <strong>v1.0</strong>.
+      </p>
+
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+        <a href="#experience" class="btn btn-secondary">View Experience</a>
+      </div>
     </section>
 
+    <!-- =========================================
+         ABOUT & EDUCATION
+    ========================================= -->
+    <section id="about">
+      <div class="section-header">
+        <span class="section-tag">About Me</span>
+        <h2>Background & Education</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <!-- EDIT: Update summary paragraph(s) here -->
+          <p>
+            Developed a strong foundation in computing, networking, and systems thinking,
+            supported by active involvement in leadership and organizational initiatives.
+            I've strengthened my ability to coordinate teams, manage structured programs,
+            and operate effectively in dynamic environments.
+          </p>
+          <p>
+            I'm particularly interested in leveraging data-driven systems to improve
+            institutional efficiency and digital infrastructure — contributing to
+            Indonesia's broader digital transformation.
+          </p>
+          <p>
+            Based between East Jakarta and Bandung, Indonesia.
+          </p>
+        </div>
+
+        <div class="edu-card">
+          <!-- EDIT: Update education details here -->
+          <h3>Institut Teknologi Bandung (ITB)</h3>
+          <div class="edu-meta">
+            Information Systems and Technology (STI) <br>
+            <span class="accent-text">July 2024 – July 2028</span>
+          </div>
+          <div class="course-tags">
+            <span class="course-tag">Data Structures</span>
+            <span class="course-tag">Algorithms</span>
+            <span class="course-tag">Database Systems</span>
+            <span class="course-tag">Computer Networks</span>
+            <span class="course-tag">Operating Systems</span>
+            <span class="course-tag">Systems Analysis & Design</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         EXPERIENCE TIMELINE
+    ========================================= -->
     <section id="experience">
-        <h2><span>Pengalaman</span> & Organisasi</h2>
-        <div class="grid">
-            <div class="card">
-                <h3>ARKAVIDIA ITB</h3>
-                <div class="subtitle">Staff of Project Management Division (Nov 2025 - Sekarang)</div>
-                <ul>
-                    <li>Mengoordinasikan eksekusi proyek di 10 tim untuk memastikan keselarasan antara perencanaan dan implementasi.</li>
-                    <li>Berkolaborasi dengan tim lintas fungsi untuk meningkatkan efisiensi koordinasi sebesar 70%.</li>
-                    <li>Mengembangkan alur kerja terstruktur untuk meningkatkan konsistensi pemantauan dan eksekusi.</li>
-                </ul>
-            </div>
+      <div class="section-header">
+        <span class="section-tag">Experience</span>
+        <h2>Leadership & Events</h2>
+      </div>
+      <div class="timeline">
 
-            <div class="card">
-                <h3>HMIF ITB</h3>
-                <div class="subtitle">Staff of Club and Hobbies Division (Sept 2025 - Sekarang)</div>
-                <ul>
-                    <li>Merancang program keterlibatan mahasiswa yang menjangkau ±500 peserta.</li>
-                    <li>Berhasil meningkatkan partisipasi sebesar 90% melalui inovasi program.</li>
-                    <li>Memfasilitasi kolaborasi antartim untuk memastikan penyampaian program yang efektif.</li>
-                </ul>
+        <!-- EDIT: Each .exp-card represents one experience entry -->
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <div class="exp-org">ARKAVIDIA ITB</div>
+              <h3>Staff of Project Management Division</h3>
             </div>
+            <span class="exp-date">Nov 2025 – Present</span>
+          </div>
+          <ul>
+            <li>Coordinated project execution across 10 teams to ensure alignment between planning and implementation.</li>
+            <li>Collaborated with cross-functional teams to improve coordination efficiency by 70%.</li>
+            <li>Developed structured workflows to enhance monitoring and execution consistency.</li>
+          </ul>
+        </article>
 
-            <div class="card">
-                <h3>Olimpiade KM ITB XII</h3>
-                <div class="subtitle">Event Organizer (Sept 2024 - Des 2024)</div>
-                <ul>
-                    <li>Mengoordinasikan pelaksanaan upacara pembukaan yang melibatkan ±1000 peserta.</li>
-                    <li>Memastikan kelancaran operasional acara melalui kolaborasi lintas tim yang solid.</li>
-                    <li>Mendukung perencanaan logistik dan eksekusi di lapangan secara efisien.</li>
-                </ul>
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <div class="exp-org">Himpunan Mahasiswa Informatika (HMIF) ITB</div>
+              <h3>Staff of Club and Hobbies Division</h3>
             </div>
-        </div>
+            <span class="exp-date">Sept 2025 – Present</span>
+          </div>
+          <ul>
+            <li>Designed student engagement programs reaching ±500 participants, increasing participation by 90% through program innovation.</li>
+            <li>Facilitated cross-team collaboration to ensure effective delivery.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <div class="exp-org">Sekolah Teknik Elektro dan Informatika (STEI-K) ITB</div>
+              <h3>Staff of Human Resources</h3>
+            </div>
+            <span class="exp-date">Oct 2024 – July 2025</span>
+          </div>
+          <ul>
+            <li>Managed coordination for 11 students within the cohort.</li>
+            <li>Strengthened internal communication systems to improve collaboration and engagement.</li>
+          </ul>
+        </article>
+
+        <article class="exp-card">
+          <div class="exp-card-header">
+            <div>
+              <div class="exp-org">Olimpiade KM ITB XII</div>
+              <h3>Event Organizer</h3>
+            </div>
+            <span class="exp-date">Sept 2024 – Dec 2024</span>
+          </div>
+          <ul>
+            <li>Coordinated opening ceremony execution involving ±1000 participants.</li>
+            <li>Ensured smooth event operations through cross-team collaboration and supported logistics planning.</li>
+          </ul>
+        </article>
+
+      </div>
     </section>
 
-    <section id="skills" style="background-color: #0b1329;">
-        <h2><span>Keahlian</span> & Sertifikasi</h2>
-        <div class="skills-container" style="margin-bottom: 40px;">
-            <div class="skill-badge">Cisco Networking</div>
-            <div class="skill-badge">C Programming</div>
-            <div class="skill-badge">Systems Analysis</div>
-            <div class="skill-badge">Project Coordination</div>
-            <div class="skill-badge">People Management</div>
-            <div class="skill-badge">Problem Solving</div>
-            <div class="skill-badge">Microsoft Office</div>
-        </div>
-        
-        <h3 style="text-align: center; margin-bottom: 20px; color: #94a3b8; font-weight: 500;">Sertifikasi Utama</h3>
-        <div class="grid" style="max-width: 600px; margin: 0 auto;">
-            <div class="card" style="text-align: center; padding: 20px;">
-                <h4 style="color: #38bdf8;">Operating Systems Basics</h4>
-                <p style="font-size: 14px; color: #94a3b8; margin-top: 5px;">Issued by Cisco</p>
+    <!-- =========================================
+         SKILLS, CERTIFICATIONS & LANGUAGES
+    ========================================= -->
+    <section id="skills">
+      <div class="section-header">
+        <span class="section-tag">Capabilities</span>
+        <h2>Skills & Certifications</h2>
+      </div>
+      <div class="skills-wrapper">
+        <div>
+          <h3 style="font-size: 1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;">Technical & Professional Skills</h3>
+          <!-- EDIT: Add/remove skill badges here -->
+          <div class="badge-cloud">
+            <span class="badge"><span class="dot-icon"></span>Cisco Networking</span>
+            <span class="badge"><span class="dot-icon"></span>C Programming</span>
+            <span class="badge"><span class="dot-icon"></span>Systems Analysis</span>
+            <span class="badge"><span class="dot-icon"></span>Problem Solving</span>
+            <span class="badge"><span class="dot-icon"></span>Project Coordination</span>
+            <span class="badge"><span class="dot-icon"></span>People Management</span>
+            <span class="badge"><span class="dot-icon"></span>Microsoft Office</span>
+          </div>
+
+          <h3 style="font-size: 1rem; color: var(--text-muted); font-weight: 600; margin: 32px 0 16px; text-transform: uppercase; letter-spacing: 0.08em;">Languages</h3>
+          <div class="lang-row">
+            <div class="lang-chip">
+              <strong>Indonesian</strong>
+              <span>Native</span>
             </div>
+            <div class="lang-chip">
+              <strong>English</strong>
+              <span>Intermediate</span>
+            </div>
+          </div>
         </div>
+
+        <div>
+          <h3 style="font-size: 1rem; color: var(--text-muted); font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em;">Certifications</h3>
+          <!-- EDIT: Add/remove certification items here -->
+          <div class="cert-list">
+            <div class="cert-item">
+              <div class="cert-icon">C</div>
+              <div>
+                <h4>Operating Systems Basics</h4>
+                <p>Cisco Networking Academy</p>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">N</div>
+              <div>
+                <h4>NETCOMP 4.0</h4>
+                <p>Participant — Networking Competition, Elimination Round</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" style="text-align: center;">
-        <h2>Hubungi <span>Saya</span></h2>
-        <p style="margin-bottom: 30px; color: #cbd5e1;">Silakan hubungi atau diskusikan kolaborasi melalui platform di bawah ini:</p>
-        <p style="margin-bottom: 10px;">Email: <a href="mailto:18224116@std.stei.itb.ac.id">18224116@std.stei.itb.ac.id</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/muhammad-arkan-dhaifullah-22ab68380" target="_blank">linkedin.com/in/muhammad-arkan-dhaifullah</a></p>
+    <!-- =========================================
+         CONTACT
+    ========================================= -->
+    <section id="contact" class="contact-section">
+      <div class="section-header">
+        <span class="section-tag">Get In Touch</span>
+        <h2>Let's Connect</h2>
+      </div>
+      <p class="lead">
+        Open to internship opportunities, collaborations, and conversations about
+        digital systems, networking, and technology for institutional impact.
+      </p>
+      <!-- EDIT: Update contact details here -->
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="label">Email</div>
+          <a class="value" href="mailto:18224116@std.stei.itb.ac.id">18224116@std.stei.itb.ac.id</a>
+        </div>
+        <div class="contact-card">
+          <div class="label">Phone</div>
+          <a class="value" href="tel:+6285697949557">0856-9794-9557</a>
+        </div>
+        <div class="contact-card">
+          <div class="label">LinkedIn</div>
+          <a class="value" href="https://www.linkedin.com/in/muhammad-arkan-dhaifullah-22ab68380" target="_blank" rel="noopener">View Profile</a>
+        </div>
+        <div class="contact-card">
+          <div class="label">Location</div>
+          <div class="value">Bandung, Indonesia</div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Muhammad Arkan Dhaifullah | NIM: 18224116. All rights reserved.</p>
-        <p style="font-size: 12px; margin-top: 5px; color: #475569;">Dibuat untuk pemenuhan Tugas Individu K2 - CI/CD Deployment Demo</p>
-    </footer>
+  </div>
+</main>
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+<footer>
+  <div class="container">
+    <p>
+      © 2026 Muhammad Arkan Dhaifullah · NIM <span class="footer-accent">18224116</span> ·
+      Built & deployed via <span class="footer-accent">GitHub Pages CI/CD</span>
+    </p>
+  </div>
+</footer>
 
 </body>
 </html>
